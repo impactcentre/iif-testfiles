@@ -94,7 +94,7 @@ The testfiles cover the following toolwrapper services:
 	- groundtruth.xml
 	- ocr.xml
 - [xsltproc](https://github.com/impactcentre/interoperability-framework/blob/master/toolwrapper/examples/xsltproc.xml "xsltproc")
-	- ocr.xml
+	- document.xml
 	- stylesheet.xsl
 
 
