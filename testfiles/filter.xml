@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Type: (1)=Double  (2)=Boolean  (3)=Integer  (4)=String-->
+<!--Text Type: (0)=Multi-line  (1)=Single-line  (2)=List-->
+<Parameters>
+  <Parameter type="4" name="Replacement Rule" id="1" value="F503:=1EBD" sortIndex="1" visible="false" isSet="true">
+    <Description>Deprecated code for latin small letter e with tilde</Description>
+  </Parameter>
+  <Parameter type="4" name="Replacement Rule" id="2" value="F507:=E665" sortIndex="2" visible="false" isSet="true">
+    <Description>Deprecated code for latin small letter p with macron</Description>
+  </Parameter>
+</Parameters>

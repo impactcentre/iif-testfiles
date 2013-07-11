@@ -1,0 +1,1573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Eval xmlns="http://schema.primaresearch.org/PAGE/eval/layout/2011-02-09" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/eval/layout/2011-02-09 http://schema.primaresearch.org/PAGE/eval/layout/2010-02-09/layouteval.xsd">
+	<Metadata>
+	<Creator></Creator>
+	<Created>2010-11-26T12:49:12</Created>
+	<LastChange>2011-07-04T13:08:06</LastChange>
+	<Comments>Profile for a general recognition scenario with main focus on text regions.
+Features:
+  - Text regions are considered more important than other regions
+  - Miss of regions or parts of regions is penalized most
+  - Merges get a high penalty
+  - Merge or split of consecutive text blocks ('allowable') only minimally penalized
+  - Image, graphic and line drawing are treated as equal (misclassification not penalized)
+  - Noise and unknown regions are irrelevant</Comments></Metadata>
+	<Profile>
+	<GeneralSettings>
+	<Parameter type="2" sortIndex="1" version="0" name="Use foreground area" readOnly="false" isSet="true" visible="true" value="true" id="2001">
+	<Description>Use the number of foreground pixels instead of the area defined by polygons.</Description></Parameter>
+	<Parameter type="1" sortIndex="2" version="0" name="Rd Orientation Threshold" readOnly="true" isSet="true" visible="true" value="10.00000" id="2002" min="0.00000" max="90.00000" step="1.00000">
+	<Description>Threshold until when a difference of two reading orientation angles is allowable.</Description></Parameter>
+	<Parameter type="4" sortIndex="3" version="0" name="Def Rd Dir" readOnly="false" isSet="true" visible="true" value="left-to-right" id="2003" textType="2">
+	<Description>Default Reading Direction</Description>
+	<ValidValues>
+	<Value value="bottom-to-top"/>
+	<Value value="left-to-right"/>
+	<Value value="right-to-left"/>
+	<Value value="top-to-bottom"/></ValidValues></Parameter>
+	<Parameter type="4" sortIndex="4" version="0" name="Rd Dir Usage" readOnly="false" isSet="true" visible="true" value="Use default if not set in ground-truth" id="2004" textType="2">
+	<Description>Reading Direction Usage</Description>
+	<ValidValues>
+	<Value value="Always use default value"/>
+	<Value value="As specified in ground-truth"/>
+	<Value value="Use default if not set in ground-truth"/></ValidValues></Parameter>
+	<Parameter type="1" sortIndex="5" version="0" name="Def Rd Orientation" readOnly="false" isSet="true" visible="true" value="0.00000" id="2005" min="-179.00000" max="180.00000" step="1.00000">
+	<Description>Default reading orientation</Description></Parameter>
+	<Parameter type="4" sortIndex="6" version="0" name="Rd Orient. Usage" readOnly="false" isSet="true" visible="true" value="Use default if not set in ground-truth" id="2006" textType="2">
+	<Description>Reading Orientation Usage</Description>
+	<ValidValues>
+	<Value value="Always use default value"/>
+	<Value value="As specified in ground-truth"/>
+	<Value value="Use default if not set in ground-truth"/></ValidValues></Parameter></GeneralSettings>
+	<ErrorTypeWeights>
+	<ErrorTypeWeight name="Split" enableAllowable="true" type="1">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></ErrorTypeWeight>
+	<ErrorTypeWeight name="Merge" enableAllowable="true" type="2">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1"/>
+	<RegionTypeWeight name="Image" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" enableAllowable="true" type="1024"/>
+	<SubTypeWeight name="TOC-entry" enableAllowable="true" subtype="TOC-entry">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="caption" enableAllowable="true" subtype="caption">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="catch-word" enableAllowable="true" subtype="catch-word">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="credit" enableAllowable="true" subtype="credit">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="drop-capital" enableAllowable="true" subtype="drop-capital">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="floating" enableAllowable="true" subtype="floating">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="footer" enableAllowable="true" subtype="footer">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="footnote" enableAllowable="true" subtype="footnote">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="footnote-continued" enableAllowable="true" subtype="footnote-continued">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="header" enableAllowable="true" subtype="header">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="heading" enableAllowable="true" subtype="heading">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="marginalia" enableAllowable="true" subtype="marginalia">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="page-number" enableAllowable="true" subtype="page-number">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="paragraph" enableAllowable="true" subtype="paragraph">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="signature-mark" enableAllowable="true" subtype="signature-mark">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></SubTypeWeight></RegionTypeWeight>
+	<RegionTypeWeight name="Image" enableAllowable="true" type="2">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Graphic" enableAllowable="true" type="4">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Line Drawing" enableAllowable="true" type="8">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Chart" enableAllowable="true" type="16">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Separator" enableAllowable="true" type="32">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Table" enableAllowable="true" type="64">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Maths" enableAllowable="true" type="128">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Frame" enableAllowable="true" type="256">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Noise" enableAllowable="true" type="512">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Unknown" enableAllowable="true" type="1024">
+	<RegionTypeWeight name="Text" enableAllowable="true" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" allowableWeight="0.25000" useAllowable="true" enableAllowable="true" type="1024"/></RegionTypeWeight></ErrorTypeWeight>
+	<ErrorTypeWeight name="Miss" enableAllowable="false" type="3">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="3.00000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="3.00000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="3.00000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="3.00000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="3.00000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="3.00000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="3.00000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="3.00000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="3.00000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="3.00000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="3.00000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="3.00000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="3.00000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="3.00000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="3.00000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="3.00000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="3.00000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="3.00000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="3.00000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="3.00000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="3.00000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="3.00000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="3.00000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="3.00000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="3.00000" enableAllowable="false" type="1024"/></ErrorTypeWeight>
+	<ErrorTypeWeight name="Partial Miss" enableAllowable="false" type="4">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="3.00000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="3.00000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="3.00000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="3.00000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="3.00000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="3.00000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="3.00000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="3.00000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="3.00000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="3.00000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="3.00000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="3.00000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="3.00000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="3.00000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="3.00000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="3.00000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="3.00000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="3.00000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="3.00000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="3.00000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="3.00000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="3.00000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="3.00000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="3.00000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="3.00000" enableAllowable="false" type="1024"/></ErrorTypeWeight>
+	<ErrorTypeWeight name="Misclassification" enableAllowable="false" type="5">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1"/>
+	<RegionTypeWeight name="Image" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" enableAllowable="false" type="1024"/>
+	<SubTypeWeight name="TOC-entry" enableAllowable="false" subtype="TOC-entry">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="caption" enableAllowable="false" subtype="caption">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="catch-word" enableAllowable="false" subtype="catch-word">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="credit" enableAllowable="false" subtype="credit">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="drop-capital" enableAllowable="false" subtype="drop-capital">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="floating" enableAllowable="false" subtype="floating">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="footer" enableAllowable="false" subtype="footer">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="footnote" enableAllowable="false" subtype="footnote">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="footnote-continued" enableAllowable="false" subtype="footnote-continued">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="header" enableAllowable="false" subtype="header">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="heading" enableAllowable="false" subtype="heading">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="marginalia" enableAllowable="false" subtype="marginalia">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="page-number" enableAllowable="false" subtype="page-number">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="paragraph" enableAllowable="false" subtype="paragraph">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight>
+	<SubTypeWeight name="signature-mark" enableAllowable="false" subtype="signature-mark">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></SubTypeWeight></RegionTypeWeight>
+	<RegionTypeWeight name="Image" enableAllowable="false" type="2">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="0.00000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="0.00000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Graphic" enableAllowable="false" type="4">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="0.00000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="0.00000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Line Drawing" enableAllowable="false" type="8">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="0.00000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="0.00000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Chart" enableAllowable="false" type="16">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Separator" enableAllowable="false" type="32">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Table" enableAllowable="false" type="64">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Maths" enableAllowable="false" type="128">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Frame" enableAllowable="false" type="256">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Noise" enableAllowable="false" type="512">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></RegionTypeWeight>
+	<RegionTypeWeight name="Unknown" enableAllowable="false" type="1024">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="1.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="1.50000" enableAllowable="false" type="1024"/></RegionTypeWeight></ErrorTypeWeight>
+	<ErrorTypeWeight name="False Detection" enableAllowable="false" type="6">
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="0.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="0.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="0.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="0.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="0.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="0.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="0.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="0.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="0.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="0.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="0.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="0.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="0.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="0.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="0.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="0.50000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="0.50000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="0.50000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="0.50000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="0.50000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="0.50000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="0.50000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="0.50000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="0.50000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="0.50000" enableAllowable="false" type="1024"/></ErrorTypeWeight></ErrorTypeWeights>
+	<RegionTypeWeights>
+	<RegionTypeWeight name="Text" enableAllowable="false" type="1">
+	<SubTypeWeight name="TOC-entry" weight="1.50000" enableAllowable="false" subtype="TOC-entry"/>
+	<SubTypeWeight name="caption" weight="1.50000" enableAllowable="false" subtype="caption"/>
+	<SubTypeWeight name="catch-word" weight="1.50000" enableAllowable="false" subtype="catch-word"/>
+	<SubTypeWeight name="credit" weight="1.50000" enableAllowable="false" subtype="credit"/>
+	<SubTypeWeight name="drop-capital" weight="1.50000" enableAllowable="false" subtype="drop-capital"/>
+	<SubTypeWeight name="floating" weight="1.50000" enableAllowable="false" subtype="floating"/>
+	<SubTypeWeight name="footer" weight="1.50000" enableAllowable="false" subtype="footer"/>
+	<SubTypeWeight name="footnote" weight="1.50000" enableAllowable="false" subtype="footnote"/>
+	<SubTypeWeight name="footnote-continued" weight="1.50000" enableAllowable="false" subtype="footnote-continued"/>
+	<SubTypeWeight name="header" weight="1.50000" enableAllowable="false" subtype="header"/>
+	<SubTypeWeight name="heading" weight="1.50000" enableAllowable="false" subtype="heading"/>
+	<SubTypeWeight name="marginalia" weight="1.50000" enableAllowable="false" subtype="marginalia"/>
+	<SubTypeWeight name="page-number" weight="1.50000" enableAllowable="false" subtype="page-number"/>
+	<SubTypeWeight name="paragraph" weight="1.50000" enableAllowable="false" subtype="paragraph"/>
+	<SubTypeWeight name="signature-mark" weight="1.50000" enableAllowable="false" subtype="signature-mark"/></RegionTypeWeight>
+	<RegionTypeWeight name="Image" weight="1.00000" enableAllowable="false" type="2"/>
+	<RegionTypeWeight name="Graphic" weight="1.00000" enableAllowable="false" type="4"/>
+	<RegionTypeWeight name="Line Drawing" weight="1.00000" enableAllowable="false" type="8"/>
+	<RegionTypeWeight name="Chart" weight="1.00000" enableAllowable="false" type="16"/>
+	<RegionTypeWeight name="Separator" weight="1.00000" enableAllowable="false" type="32"/>
+	<RegionTypeWeight name="Table" weight="1.00000" enableAllowable="false" type="64"/>
+	<RegionTypeWeight name="Maths" weight="1.00000" enableAllowable="false" type="128"/>
+	<RegionTypeWeight name="Frame" weight="1.00000" enableAllowable="false" type="256"/>
+	<RegionTypeWeight name="Noise" weight="0.00000" enableAllowable="false" type="512"/>
+	<RegionTypeWeight name="Unknown" weight="0.00000" enableAllowable="false" type="1024"/></RegionTypeWeights>
+	<ReadingOrderWeight name="Reading Order" weight="1.00000" enableAllowable="false">
+	<Description>Influence of the reading order error</Description></ReadingOrderWeight>
+	<TextLineWeights>
+	<ErrorTypeWeight name="Merge" weight="1.50000" enableAllowable="false" type="2"/>
+	<ErrorTypeWeight name="Split" weight="1.00000" enableAllowable="false" type="1"/>
+	<ErrorTypeWeight name="Miss" weight="2.00000" enableAllowable="false" type="3"/>
+	<ErrorTypeWeight name="Partial Miss" weight="2.00000" enableAllowable="false" type="4"/>
+	<ErrorTypeWeight name="False Detection" weight="1.00000" enableAllowable="false" type="6"/></TextLineWeights>
+	<WordWeights>
+	<ErrorTypeWeight name="Merge" weight="1.50000" enableAllowable="false" type="2"/>
+	<ErrorTypeWeight name="Split" weight="1.00000" enableAllowable="false" type="1"/>
+	<ErrorTypeWeight name="Miss" weight="2.00000" enableAllowable="false" type="3"/>
+	<ErrorTypeWeight name="Partial Miss" weight="2.00000" enableAllowable="false" type="4"/>
+	<ErrorTypeWeight name="False Detection" weight="1.00000" enableAllowable="false" type="6"/></WordWeights>
+	<GlyphWeights>
+	<ErrorTypeWeight name="Merge" weight="1.50000" enableAllowable="false" type="2"/>
+	<ErrorTypeWeight name="Split" weight="1.00000" enableAllowable="false" type="1"/>
+	<ErrorTypeWeight name="Miss" weight="2.00000" enableAllowable="false" type="3"/>
+	<ErrorTypeWeight name="Partial Miss" weight="2.00000" enableAllowable="false" type="4"/>
+	<ErrorTypeWeight name="False Detection" weight="1.00000" enableAllowable="false" type="6"/></GlyphWeights></Profile></Eval>
