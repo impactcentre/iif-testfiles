@@ -33,6 +33,9 @@ The testfiles cover the following toolwrapper services:
 	- image.word.tif
 - [cuneiform](https://github.com/impactcentre/interoperability-framework/blob/master/toolwrapper/examples/cuneiform.xml "cuneiform")
 	- image.bw.tif
+- [cutouts] (https://github.com/impactcentre/interoperability-framework/blob/master/toolwrapper/examples/cutouts.xml "cutouts")
+	- 00426982.png
+	- 00426982.xml
 - [exiftool](https://github.com/impactcentre/interoperability-framework/blob/master/toolwrapper/examples/exiftool.xml "exiftool")
 	- image.tif
 - [finereader](https://github.com/impactcentre/interoperability-framework/blob/master/toolwrapper/examples/finereader.xml "finereader")
