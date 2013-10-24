@@ -36,6 +36,7 @@ The testfiles cover the following toolwrapper services:
 - [cutouts] (https://github.com/impactcentre/interoperability-framework/blob/master/toolwrapper/examples/cutouts.xml "cutouts")
 	- 00426982.png
 	- 00426982.xml
+	- output.zip
 - [exiftool](https://github.com/impactcentre/interoperability-framework/blob/master/toolwrapper/examples/exiftool.xml "exiftool")
 	- image.tif
 - [finereader](https://github.com/impactcentre/interoperability-framework/blob/master/toolwrapper/examples/finereader.xml "finereader")
