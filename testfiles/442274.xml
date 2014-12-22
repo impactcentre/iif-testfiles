@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19 http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19/pagecontent.xsd" pcGtsId="pc-00442274">
+	<Metadata>
+	<Creator>ABBYY FineReader Engine 9.0</Creator>
+	<Created>2010-11-01T00:52:22</Created>
+	<LastChange>2012-03-12T14:11:48</LastChange></Metadata>
+	<Page imageFilename="00442274.tif" imageWidth="1604" imageHeight="2385">
+	<ReadingOrder>
+	<OrderedGroup id="ro357564684568544579089">
+	<RegionRefIndexed regionRef="r17" index="0"/>
+	<RegionRefIndexed regionRef="r16" index="1"/>
+	<RegionRefIndexed regionRef="r18" index="2"/>
+	<RegionRefIndexed regionRef="r19" index="3"/>
+	<RegionRefIndexed regionRef="r20" index="4"/>
+	<RegionRefIndexed regionRef="r21" index="5"/>
+	<RegionRefIndexed regionRef="r22" index="6"/>
+	<RegionRefIndexed regionRef="r23" index="7"/>
+	<RegionRefIndexed regionRef="r24" index="8"/>
+	<RegionRefIndexed regionRef="r25" index="9"/>
+	<RegionRefIndexed regionRef="r26" index="10"/></OrderedGroup></ReadingOrder>
+	<TextRegion id="r16" type="heading">
+	<Coords>
+	<Point x="471" y="580"/>
+	<Point x="471" y="671"/>
+	<Point x="1119" y="671"/>
+	<Point x="1119" y="580"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>A ROZINANTE.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r17" type="paragraph">
+	<Coords>
+	<Point x="392" y="145"/>
+	<Point x="392" y="552"/>
+	<Point x="1171" y="552"/>
+	<Point x="1171" y="145"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Que el tacito Viadie
+Toda ſu razon de ea
+Cifrò en vna retira
+Segun ente Celei
+Libró en mi opinion diui
+Si encubriera mas lo huma.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r18" type="drop-capital">
+	<Coords>
+	<Point x="411" y="719"/>
+	<Point x="411" y="819"/>
+	<Point x="467" y="811"/>
+	<Point x="465" y="719"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>S</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r19" type="paragraph">
+	<Coords>
+	<Point x="473" y="707"/>
+	<Point x="470" y="736"/>
+	<Point x="469" y="823"/>
+	<Point x="464" y="841"/>
+	<Point x="478" y="953"/>
+	<Point x="568" y="964"/>
+	<Point x="647" y="966"/>
+	<Point x="661" y="952"/>
+	<Point x="805" y="953"/>
+	<Point x="863" y="952"/>
+	<Point x="1075" y="972"/>
+	<Point x="1216" y="978"/>
+	<Point x="1216" y="707"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Oy Rozinante el famo
+Biſnieto delgran Babie
+Por pecados de ﬂaque
+Fuy a poder de vn don Quixo.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r20" type="paragraph">
+	<Coords>
+	<Point x="369" y="950"/>
+	<Point x="369" y="1323"/>
+	<Point x="638" y="1338"/>
+	<Point x="1121" y="1323"/>
+	<Point x="1110" y="993"/>
+	<Point x="1108" y="985"/>
+	<Point x="856" y="960"/>
+	<Point x="722" y="961"/>
+	<Point x="637" y="977"/>
+	<Point x="523" y="961"/>
+	<Point x="473" y="979"/>
+	<Point x="432" y="962"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Parejas corri a lo ﬂo
+Mas por vña de caua
+No ſe me eſcapò ceua
+Que eo ſaquè a Lazari
+Quando para hurtar el vi
+Al ciego le di la pa.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r21" type="heading">
+	<Coords>
+	<Point x="128" y="1380"/>
+	<Point x="128" y="1530"/>
+	<Point x="1426" y="1530"/>
+	<Point x="1426" y="1380"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>ORLANDO FVRIOSO, A DON QVI-
+xote de la Mancha.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r22" type="heading">
+	<Coords>
+	<Point x="578" y="1538"/>
+	<Point x="578" y="1642"/>
+	<Point x="973" y="1642"/>
+	<Point x="973" y="1538"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>SONETO.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r23" type="drop-capital">
+	<Coords>
+	<Point x="290" y="1685"/>
+	<Point x="290" y="1797"/>
+	<Point x="338" y="1797"/>
+	<Point x="342" y="1780"/>
+	<Point x="342" y="1706"/>
+	<Point x="338" y="1685"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>S</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r24" type="paragraph">
+	<Coords>
+	<Point x="346" y="1695"/>
+	<Point x="344" y="1767"/>
+	<Point x="342" y="1832"/>
+	<Point x="346" y="1928"/>
+	<Point x="733" y="1934"/>
+	<Point x="738" y="1941"/>
+	<Point x="1043" y="1934"/>
+	<Point x="1183" y="1942"/>
+	<Point x="1183" y="1690"/>
+	<Point x="888" y="1689"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Ino eres Par, tampoco le has tenido,
+Que par pudieras ſer entre mil pares,
+Ni puede auerle donde tu te haares,
+Inuito vencedor, jamas vencido.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r25" type="paragraph">
+	<Coords>
+	<Point x="288" y="1947"/>
+	<Point x="288" y="2221"/>
+	<Point x="1157" y="2221"/>
+	<Point x="1157" y="1947"/>
+	<Point x="1067" y="1949"/>
+	<Point x="975" y="1941"/>
+	<Point x="911" y="1943"/>
+	<Point x="763" y="1950"/>
+	<Point x="633" y="1941"/>
+	<Point x="342" y="1937"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Orlando ſoy Quixote, que perdido,
+Por Angelica vi remotos mares,
+Ofreciendo a lafama en ſus altares,
+Aquel valor, que reſpeto el oluido.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r26" type="catch-word">
+	<Coords>
+	<Point x="1323" y="2166"/>
+	<Point x="1323" y="2278"/>
+	<Point x="1426" y="2278"/>
+	<Point x="1426" y="2166"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>No</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r27" type="credit">
+	<Coords>
+	<Point x="447" y="2297"/>
+	<Point x="447" y="2378"/>
+	<Point x="1169" y="2378"/>
+	<Point x="1169" y="2297"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>© Biblioteca Nacional de España</Unicode></TextEquiv></TextRegion></Page></PcGts>

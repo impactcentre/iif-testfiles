@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19 http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19/pagecontent.xsd" pcGtsId="pc-00442298">
+	<Metadata>
+	<Creator>ABBYY FineReader Engine 9.0</Creator>
+	<Created>2010-10-31T00:28:06</Created>
+	<LastChange>2012-03-12T14:11:50</LastChange></Metadata>
+	<Page imageFilename="00442298.tif" imageWidth="1604" imageHeight="2385">
+	<ReadingOrder>
+	<OrderedGroup id="ro357564684568544579089">
+	<RegionRefIndexed regionRef="r9" index="0"/>
+	<RegionRefIndexed regionRef="r10" index="1"/>
+	<RegionRefIndexed regionRef="r11" index="2"/>
+	<RegionRefIndexed regionRef="r12" index="3"/>
+	<RegionRefIndexed regionRef="r13" index="4"/></OrderedGroup></ReadingOrder>
+	<TextRegion id="r7" type="header">
+	<Coords>
+	<Point x="469" y="47"/>
+	<Point x="469" y="139"/>
+	<Point x="709" y="154"/>
+	<Point x="1017" y="139"/>
+	<Point x="1017" y="47"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Primera parte de don</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r9" type="paragraph">
+	<Coords>
+	<Point x="108" y="165"/>
+	<Point x="108" y="921"/>
+	<Point x="1426" y="921"/>
+	<Point x="1426" y="165"/>
+	<Point x="916" y="156"/>
+	<Point x="707" y="159"/>
+	<Point x="644" y="163"/>
+	<Point x="236" y="147"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>rogô don Quixote, que ſe puee don, y ſe amae
+doña Molinera, ofreciendole nueuos ſeruicios, y mer
+cedes. Hechas pues de galope, y apria, las haa ai
+nunca vias ceremonias, no vio la hora don Quixo-
+te de verſe acauao, y ſalir buſcando las auenturas, y
+enando luego a Rozinante, ſubio en el, y abrançan-
+do a ſu hueſped, le dixo coſas tan erañas, agradeciẽ-
+dole la merced de auerle armado cauaero, que no es
+poſsible acertar a referirlas. El ventero por verle ya
+fuera de la venta, con no menos retoricas, aunque cõ
+mas breues palabras, reſpondio a las ſuyas, y n pedir-
+el la coa de la poſada, le dexô yr a la buen hora.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r10" type="heading">
+	<Coords>
+	<Point x="108" y="956"/>
+	<Point x="108" y="1082"/>
+	<Point x="257" y="1103"/>
+	<Point x="1430" y="1082"/>
+	<Point x="1430" y="956"/>
+	<Point x="1141" y="940"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Cap. IIII. De lo que le ſucedio a nuero couaero quan-
+do ſalio de la venta.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r11" type="drop-capital">
+	<Coords>
+	<Point x="108" y="1126"/>
+	<Point x="108" y="1365"/>
+	<Point x="366" y="1360"/>
+	<Point x="375" y="1128"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>L</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r12" type="paragraph">
+	<Coords>
+	<Point x="104" y="1391"/>
+	<Point x="104" y="2195"/>
+	<Point x="193" y="2199"/>
+	<Point x="1242" y="2176"/>
+	<Point x="1269" y="2178"/>
+	<Point x="1432" y="2168"/>
+	<Point x="1424" y="1396"/>
+	<Point x="1400" y="1109"/>
+	<Point x="1243" y="1124"/>
+	<Point x="827" y="1111"/>
+	<Point x="660" y="1107"/>
+	<Point x="408" y="1110"/>
+	<Point x="384" y="1173"/>
+	<Point x="381" y="1378"/>
+	<Point x="202" y="1382"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>A del Alua ſeria, quando don Quixote ſa-
+lio de la venta, tan contento, tan gaardo,
+tan alboroçado, por verſe y a armado caua
+ero, que el gozo le rebentaua por las cin-
+chas del cauao. Mas viniendole a la memoria los cõ
+ſejos de ſu hueſped, cerca de las preuenciones tan ne-
+cearias que auia de euar congo, eſpecial la de los
+dineros, y camiſas. Determinò boluer a ſu caſa, y aco-
+modarſe de todo, y de vn eſcudero: haziendo cuenta
+de recebir a vn labrador vezino ſuyo, que era pobre,
+y con hijos: pero muy a propoto para el oﬁcio eſcu-
+deril, de la cauaeria. Con ee penſamiento, guiò a
+Rozinante hâzia ſu aldea: el qual ca conociendo la
+querencia, con tanta gana començò a caminar, que
+parecia  no ponia los pies en el ſuelo. No auia anda-
+do mucho, quando le parecio  a ſu diera mano, dela
+eſpeura de vn boſque  ai eaua, ſalian vnas vozes</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r13" type="catch-word">
+	<Coords>
+	<Point x="1251" y="2187"/>
+	<Point x="1247" y="2265"/>
+	<Point x="1434" y="2265"/>
+	<Point x="1434" y="2173"/>
+	<Point x="1422" y="2188"/>
+	<Point x="1334" y="2181"/>
+	<Point x="1280" y="2181"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>deli-</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r14" type="credit">
+	<Coords>
+	<Point x="434" y="2291"/>
+	<Point x="434" y="2378"/>
+	<Point x="1130" y="2378"/>
+	<Point x="1130" y="2291"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>© Biblioteca Nacional de España</Unicode></TextEquiv></TextRegion></Page></PcGts>
