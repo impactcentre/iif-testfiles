@@ -1,3 +1,3 @@
-426982.xml
-442274.xml
-442298.xml
+https://github.com/impactcentre/iif-testfiles/raw/master/testfiles/426982.xml
+https://github.com/impactcentre/iif-testfiles/raw/master/testfiles/442274.xml
+https://github.com/impactcentre/iif-testfiles/raw/master/testfiles/442298.xml
