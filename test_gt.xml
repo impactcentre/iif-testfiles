@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19 http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19/pagecontent.xsd">
+	<Metadata>
+	<Creator></Creator>
+	<Created>2010-07-15T08:03:08</Created>
+	<LastChange>2010-07-28T11:00:02</LastChange></Metadata>
+	<Page imageFilename="test.tif" imageWidth="1000" imageHeight="529">
+	<TextRegion id="r1" type="paragraph">
+	<Coords>
+	<Point x="159" y="45"/>
+	<Point x="159" y="134"/>
+	<Point x="228" y="134"/>
+	<Point x="228" y="45"/></Coords></TextRegion>
+	<ImageRegion id="r2">
+	<Coords>
+	<Point x="229" y="45"/>
+	<Point x="229" y="134"/>
+	<Point x="288" y="134"/>
+	<Point x="288" y="45"/></Coords></ImageRegion>
+	<LineDrawingRegion id="r3">
+	<Coords>
+	<Point x="289" y="45"/>
+	<Point x="289" y="134"/>
+	<Point x="358" y="134"/>
+	<Point x="358" y="45"/></Coords></LineDrawingRegion>
+	<GraphicRegion id="r4">
+	<Coords>
+	<Point x="425" y="46"/>
+	<Point x="425" y="135"/>
+	<Point x="554" y="135"/>
+	<Point x="554" y="46"/></Coords></GraphicRegion>
+	<ChartRegion id="r6">
+	<Coords>
+	<Point x="555" y="46"/>
+	<Point x="555" y="135"/>
+	<Point x="624" y="135"/>
+	<Point x="624" y="46"/></Coords></ChartRegion>
+	<SeparatorRegion id="r7">
+	<Coords>
+	<Point x="425" y="136"/>
+	<Point x="425" y="235"/>
+	<Point x="554" y="235"/>
+	<Point x="554" y="136"/></Coords></SeparatorRegion>
+	<NoiseRegion id="r9">
+	<Coords>
+	<Point x="555" y="136"/>
+	<Point x="555" y="235"/>
+	<Point x="624" y="235"/>
+	<Point x="624" y="136"/></Coords></NoiseRegion>
+	<FrameRegion id="r10">
+	<Coords>
+	<Point x="159" y="135"/>
+	<Point x="159" y="234"/>
+	<Point x="228" y="234"/>
+	<Point x="228" y="135"/></Coords></FrameRegion>
+	<UnknownRegion id="r11">
+	<Coords>
+	<Point x="229" y="135"/>
+	<Point x="229" y="234"/>
+	<Point x="288" y="234"/>
+	<Point x="288" y="135"/></Coords></UnknownRegion></Page></PcGts>
