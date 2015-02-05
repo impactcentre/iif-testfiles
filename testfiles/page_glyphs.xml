@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamera-database version="2.0">
+  <symbols>
+    <symbol name="_group"/>
+    <symbol name="_group._part"/>
+    <symbol name="_split.cc_analysis"/>
+    <symbol name="_split.cc_and_cluster"/>
+    <symbol name="_split.splitx"/>
+    <symbol name="_split.splitx_left"/>
+    <symbol name="_split.splitx_max"/>
+    <symbol name="_split.splitx_right"/>
+    <symbol name="_split.splity"/>
+    <symbol name="_split.splity_bottom"/>
+    <symbol name="_split.splity_top"/>
+    <symbol name="latin.small.letter.a"/>
+    <symbol name="latin.small.letter.c"/>
+    <symbol name="latin.small.letter.e"/>
+    <symbol name="latin.small.letter.f"/>
+    <symbol name="latin.small.letter.g"/>
+    <symbol name="latin.small.letter.h"/>
+    <symbol name="latin.small.letter.i"/>
+    <symbol name="latin.small.letter.l"/>
+    <symbol name="latin.small.letter.n"/>
+    <symbol name="latin.small.letter.o"/>
+    <symbol name="latin.small.letter.r"/>
+    <symbol name="latin.small.letter.s"/>
+    <symbol name="latin.small.letter.t"/>
+    <symbol name="skip"/>
+  </symbols>
+  <glyphs>
+    <glyph uly="5" ulx="199" nrows="14" ncols="5">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.l" confidence="1.000000"/>
+      </ids>
+      <data>
+        1 4 1 4 2 2 2 3 2 2 3 2 3 2 3 2 3 2 3 1 3 4 1 4 1 3 2 2 3 0 
+      </data>
+    </glyph>
+    <glyph uly="6" ulx="216" nrows="1" ncols="1">
+      <ids state="UNCLASSIFIED">
+      </ids>
+      <data>
+        0 1 
+      </data>
+    </glyph>
+    <glyph uly="7" ulx="137" nrows="2" ncols="1">
+      <ids state="UNCLASSIFIED">
+      </ids>
+      <data>
+        0 2 
+      </data>
+    </glyph>
+    <glyph uly="16" ulx="204" nrows="3" ncols="3">
+      <ids state="UNCLASSIFIED">
+      </ids>
+      <data>
+        1 8 
+      </data>
+    </glyph>
+    <glyph uly="11" ulx="44" nrows="10" ncols="5">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.t" confidence="1.000000"/>
+      </ids>
+      <data>
+        2 1 4 2 2 4 1 3 2 2 3 1 3 2 3 4 1 3 2 2 3 0 
+      </data>
+    </glyph>
+    <glyph uly="7" ulx="71" nrows="13" ncols="9">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.s" confidence="1.000000"/>
+      </ids>
+      <data>
+        5 4 3 6 2 3 1 1 1 1 2 2 4 1 2 3 7 3 7 3 6 3 7 3 1 2 4 2 1 2 4 2 1 3 2
+        3 1 7 2 0 
+      </data>
+    </glyph>
+    <glyph uly="11" ulx="108" nrows="9" ncols="6">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.c" confidence="1.000000"/>
+      </ids>
+      <data>
+        4 1 3 4 1 2 1 1 1 2 4 2 4 2 1 2 1 2 1 2 1 4 3 2 3 0 
+      </data>
+    </glyph>
+    <glyph uly="11" ulx="114" nrows="9" ncols="6">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.e" confidence="1.000000"/>
+      </ids>
+      <data>
+        2 4 2 1 1 2 1 4 2 4 1 5 1 2 1 2 1 5 1 4 3 3 2 0 
+      </data>
+    </glyph>
+    <glyph uly="11" ulx="138" nrows="9" ncols="8">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.n" confidence="1.000000"/>
+      </ids>
+      <data>
+        6 5 2 4 1 6 2 2 1 2 2 2 2 2 2 2 1 6 2 3 1 2 2 3 1 1 3 1 3 0 
+      </data>
+    </glyph>
+    <glyph uly="7" ulx="88" nrows="13" ncols="4">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.i" confidence="1.000000"/>
+      </ids>
+      <data>
+        2 2 2 2 13 3 1 3 1 2 2 2 2 1 2 7 1 2 2 0 
+      </data>
+    </glyph>
+    <glyph uly="11" ulx="120" nrows="9" ncols="5">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.s" confidence="1.000000"/>
+      </ids>
+      <data>
+        3 2 2 3 2 1 4 2 3 2 3 2 1 1 2 1 1 4 2 1 3 0 
+      </data>
+    </glyph>
+    <glyph uly="12" ulx="88" nrows="8" ncols="4">
+      <ids state="UNCLASSIFIED">
+      </ids>
+      <data>
+        1 3 1 3 1 2 2 2 2 1 2 7 1 2 2 0 
+      </data>
+    </glyph>
+    <glyph uly="11" ulx="168" nrows="8" ncols="8">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.n" confidence="1.000000"/>
+      </ids>
+      <data>
+        1 2 3 15 1 2 2 2 2 1 2 2 3 1 2 2 2 5 3 2 1 2 2 2 2 0 
+      </data>
+    </glyph>
+    <glyph uly="7" ulx="90" nrows="2" ncols="2">
+      <ids state="UNCLASSIFIED">
+      </ids>
+      <data>
+        0 4 
+      </data>
+    </glyph>
+    <glyph uly="11" ulx="151" nrows="15" ncols="10">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.g" confidence="1.000000"/>
+      </ids>
+      <data>
+        4 5 4 2 2 3 3 2 1 2 5 2 1 2 5 2 1 2 5 1 2 1 6 4 6 2 7 2 9 4 5 7 2 2 5
+        1 1 2 5 2 1 9 3 5 3 0 
+      </data>
+    </glyph>
+    <glyph uly="9" ulx="16" nrows="13" ncols="12">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.o" confidence="1.000000"/>
+      </ids>
+      <data>
+        4 5 6 4 1 3 3 4 3 2 3 3 4 2 2 3 6 6 6 2 1 3 6 2 1 3 6 2 1 3 5 3 1 3 5
+        2 2 3 4 2 4 7 7 3 5 0 
+      </data>
+    </glyph>
+    <glyph uly="12" ulx="58" nrows="9" ncols="6">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.e" confidence="1.000000"/>
+      </ids>
+      <data>
+        3 3 2 4 1 2 1 2 1 4 1 3 3 2 4 2 2 1 2 4 3 2 2 0 
+      </data>
+    </glyph>
+    <glyph uly="12" ulx="81" nrows="8" ncols="6">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.c" confidence="1.000000"/>
+      </ids>
+      <data>
+        3 3 2 4 1 2 3 2 4 2 4 2 1 2 1 5 2 2 3 0 
+      </data>
+    </glyph>
+    <glyph uly="11" ulx="190" nrows="8" ncols="7">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.a" confidence="1.000000"/>
+      </ids>
+      <data>
+        3 4 2 5 1 3 1 2 1 2 1 2 1 2 2 5 1 7 1 2 1 2 2 2 1 0 
+      </data>
+    </glyph>
+    <glyph uly="10" ulx="162" nrows="9" ncols="5">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.e" confidence="1.000000"/>
+      </ids>
+      <data>
+        4 1 2 3 1 2 1 1 1 1 1 6 1 2 3 2 3 9 1 0 
+      </data>
+    </glyph>
+    <glyph uly="11" ulx="177" nrows="8" ncols="5">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.e" confidence="1.000000"/>
+      </ids>
+      <data>
+        2 1 1 1 1 2 1 10 1 2 3 2 3 4 1 4 1 0 
+      </data>
+    </glyph>
+    <glyph uly="12" ulx="133" nrows="9" ncols="4">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.i" confidence="1.000000"/>
+      </ids>
+      <data>
+        1 10 2 2 2 1 2 3 1 3 1 2 2 1 3 0 
+      </data>
+    </glyph>
+    <glyph uly="10" ulx="183" nrows="9" ncols="6">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.r" confidence="1.000000"/>
+      </ids>
+      <data>
+        1 1 4 2 2 12 3 3 3 2 4 2 3 2 4 2 4 0 
+      </data>
+    </glyph>
+    <glyph uly="7" ulx="25" nrows="20" ncols="12">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.f" confidence="1.000000"/>
+      </ids>
+      <data>
+        9 3 8 4 7 2 2 1 6 3 9 1 11 1 10 4 8 4 8 2 10 1 11 1 10 2 10 2 10 2 10
+        1 11 1 10 2 10 2 7 1 2 2 7 4 8 0 
+      </data>
+    </glyph>
+    <glyph uly="7" ulx="50" nrows="14" ncols="7">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.h" confidence="1.000000"/>
+      </ids>
+      <data>
+        2 3 5 2 5 2 4 2 5 1 6 1 3 1 1 2 1 3 1 3 2 1 1 2 2 5 2 4 3 4 2 2 1 1 1
+        4 1 1 2 2 2 0 
+      </data>
+    </glyph>
+    <glyph uly="11" ulx="92" nrows="9" ncols="6">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.e" confidence="1.000000"/>
+      </ids>
+      <data>
+        3 3 2 4 1 2 1 2 1 10 2 1 2 2 1 1 2 2 1 4 2 4 1 0 
+      </data>
+    </glyph>
+    <glyph uly="12" ulx="99" nrows="8" ncols="8">
+      <ids state="MANUAL">
+        <id name="latin.small.letter.n" confidence="1.000000"/>
+      </ids>
+      <data>
+        0 3 1 5 1 5 3 2 1 2 2 2 2 2 2 2 2 1 2 2 2 3 1 1 3 2 2 1 2 2 3 0 
+      </data>
+    </glyph>
+  </glyphs>
+</gamera-database>
